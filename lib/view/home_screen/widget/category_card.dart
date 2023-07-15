@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:sunruleui/view/place_details_screen/widget/category_tile.dart';
 import 'package:sunruleui/view/utils/utils.dart';
+
+List img = [
+  'assets/hot-air-balloon.png',
+  'assets/hotel.png',
+  'assets/train.png',
+  'assets/car.png',
+];
+List title = [
+  'Things to do',
+  'Hotels',
+  'Transport',
+  'Car rentals',
+];
 
 class CategoryCard extends StatelessWidget {
   CategoryCard({super.key});
-
-  List img = [
-    'assets/hot-air-balloon.png',
-    'assets/hotel.png',
-    'assets/train.png',
-    'assets/car.png',
-  ];
-  List title = [
-    'Things to do',
-    'Hotels',
-    'Transport',
-    'Car rentals',
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -44,33 +45,7 @@ class CategoryCard extends StatelessWidget {
                 ]),
             child: Column(
               children: [
-                SizedBox(
-                  height: mHeight! / 7.7,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: img.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      final image = img[index];
-                      final name = title[index];
-
-                      return Padding(
-                        padding: const EdgeInsets.all(13.0),
-                        child: Column(
-                          children: [
-                            Image.asset(image, scale: 12),
-                            kHeight,
-                            Text(
-                              name,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.w500),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                ),
+                CategoryTile(),
                 Container(
                   height: mHeight! / 22,
                   width: mWidth! / 1.2,
@@ -90,9 +65,10 @@ class CategoryCard extends StatelessWidget {
                         Text(
                           'All categories',
                           style: TextStyle(
-                              color: black,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500),
+                            color: black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
                         )
                       ]),
                 )
